@@ -36,48 +36,6 @@ let closeFade=function(){
     },100);
 };
 
-let style=function() {
-btnleft.style.cssText=`
-    position:fixed;
-    border-radius: 50%;;
-    left:${x - 20}px;
-    top:${y - container.scrollTop + h/2}px;
-    width:50px;
-    height:50px;
-    border: 0px;
-    background-color: rgba(200,200,200,0.8);
-    font-size: 20px;
-    z-index: 999999999;
-    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-`;
-btnright.style.cssText=`
-    position:fixed;
-    border-radius: 50%;
-    left:${x + w + 20}px;
-    top:${y - container.scrollTop + h/2}px;
-    width:50px;
-    border: 0px;
-    height:50px;
-    font-size: 20px;
-    background-color: rgba(200,200,200,0.8);
-    z-index: 999999999;
-    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-`;
-btnleft.innerText="<";
-btnright.innerText=">";
-
-img.style.cssText=`
-    position:fixed;
-    border-radius: 12px;
-    left:${x}px;
-    top:${y - container.scrollTop}px;
-    width:${w}px;
-    height:${h}px;
-    z-index: 999999999;
-    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    opacity:0;
-`;
-}
 
 // 监听滚动关闭层
 document.addEventListener("scroll",function(){
@@ -119,7 +77,47 @@ document.querySelectorAll("img").forEach(v=>{
 	        btnright=document.createElement("button");
 	        btnleft=document.createElement("button");
 	        img.src=src;
-	        style();
+	        btnleft.style.cssText=`
+			    position:fixed;
+			    border-radius: 50%;;
+			    left:${x - 20}px;
+			    top:${y - container.scrollTop + h/2}px;
+			    width:50px;
+			    height:50px;
+			    border: 0px;
+			    background-color: rgba(200,200,200,0.8);
+			    font-size: 20px;
+			    z-index: 999999999;
+			    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+			`;
+			btnright.style.cssText=`
+			    position:fixed;
+			    border-radius: 50%;
+			    left:${x + w + 20}px;
+			    top:${y - container.scrollTop + h/2}px;
+			    width:50px;
+			    border: 0px;
+			    height:50px;
+			    font-size: 20px;
+			    background-color: rgba(200,200,200,0.8);
+			    z-index: 999999999;
+			    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+			`;
+			btnleft.innerText="<";
+			btnright.innerText=">";
+
+			img.style.cssText=`
+			    position:fixed;
+			    border-radius: 12px;
+			    left:${x}px;
+			    top:${y - container.scrollTop}px;
+			    width:${w}px;
+			    height:${h}px;
+			    z-index: 999999999;
+			    transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+			    opacity:0;
+			`;
+
 
 
 	        btnleft.onclick=function(){
@@ -133,7 +131,6 @@ document.querySelectorAll("img").forEach(v=>{
 	        	y=left.offsetTop;
 	      		w=left.offsetWidth;
 	        	h=left.offsetHeight;
-	        	style();
 	        	id--;
 	        }
 	        btnright.onclick=function(){
@@ -148,8 +145,6 @@ document.querySelectorAll("img").forEach(v=>{
 	        	y=right.offsetTop;
 	      		w=right.offsetWidth;
 	        	h=right.offsetHeight;
-	        	style();
-	        	
 	        }
 	        img.onload=function(){
 	            document.body.appendChild(img);
