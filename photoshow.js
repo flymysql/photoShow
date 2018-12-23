@@ -121,24 +121,25 @@ document.querySelectorAll("img").forEach(v=>{
 
 
 	        btnleft.onclick=function(){
-	        	if(id===0){
+	        	if(id<=0){
 	        		alert("已经是第一张了！");
 	        		return;
 	        	}
-	        	var left=document.getElementById(id-1);
+	        	id--;
+	        	var left=document.getElementById(id);
 	        	img.src=left.src;
 	        	x=left.offsetLeft;
 	        	y=left.offsetTop;
 	      		w=left.offsetWidth;
 	        	h=left.offsetHeight;
-	        	id--;
 	        }
 	        btnright.onclick=function(){
-	        	id++;
-	        	if(id>=imgid){
+	        	
+	        	if(id>=imgid-1){
 	        		alert("已经是最后一张了！");
 	        		return;
 	        	}
+	        	id++;
 	        	var right=document.getElementById(id);
 	        	img.src=right.src;
 	        	x=right.offsetLeft;
@@ -146,6 +147,7 @@ document.querySelectorAll("img").forEach(v=>{
 	      		w=right.offsetWidth;
 	        	h=right.offsetHeight;
 	        }
+
 	        img.onload=function(){
 	            document.body.appendChild(img);
 	            document.body.appendChild(btnright);
